@@ -1,10 +1,11 @@
 import { useState } from "react"
-import { useNavigate, useContext } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { ContactContext } from '../contexts/ContactCont.jsx'
+import { useContext } from "react"
 
 export default function Form() {
 
-    const { addContact} = useContext(ContactContext)
+    const { addContact } = useContext(ContactContext)
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [phoneNumber, setPhoneNumber] = useState()
@@ -33,12 +34,14 @@ export default function Form() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input name="firstName" type="text" placeholder="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-            <input name="LastName" type="text" placeholder="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-            <input name="PhoneNumber" type="text" placeholder="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+            <div className="gap-3">
+                <input className="border-2 rounded-2xl p-1" name="firstName" type="text" placeholder="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                <input className="border-2 rounded-2xl p-1" name="LastName" type="text" placeholder="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                <input className="border-2 rounded-2xl p-1" name="PhoneNumber" type="text" placeholder="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
 
-            <button type="submit" >Add new contact</button>
-            <button type="button" onClick={deleteInfo}>delete info</button>
+                <button className="p-2 rounded-full bg-gray-200 text-black" type="submit" >Add new contact</button>
+                <button className="p-2 rounded-full bg-gray-200 text-black" type="button" onClick={deleteInfo}>delete info</button>
+            </div>
         </form>
     )
 }
