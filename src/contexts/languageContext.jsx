@@ -4,13 +4,9 @@ export const LanguageContext = createContext()
 
 export default function LanguageProvider({ children }) {
 
-    const [lang, setlang] = useState("ua")
-    const toggleLanguage = () => {
-        if (lang === 'ua') {
-            setlang('en')
-        } else {
-            setlang('ua')
-        }
+    const [lang, setLang] = useState("ua")
+    const toggleLanguage = (newLang) => {
+        setLang(newLang)
     }
     const translation = {
         ua: {
@@ -18,7 +14,9 @@ export default function LanguageProvider({ children }) {
             add: "Додати контакт",
             firstName: "Ім'я",
             lastName: "Прізвище",
-            phone: "Номер телефону"
+            phone: "Номер телефону",
+            addNew: "Додати контакт",
+            delInfo: "Видалити інформацію"
         },
         en: {
             contact: "Contacts",
@@ -26,6 +24,8 @@ export default function LanguageProvider({ children }) {
             firstName: "First Name",
             lastName: "Last Name",
             phone: "Phone Number",
+            addNew: "Add new contact",
+            delInfo: "delete info"
         }
     }
     const texts = translation[lang]

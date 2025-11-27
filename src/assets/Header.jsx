@@ -6,14 +6,14 @@ import { ThemeContext } from "../contexts/ThemeContext";
 export default function Header() {
 
     const { theme, toggleTheme } = useContext(ThemeContext )
-    const { lang, toggleLanguage } = useContext(LanguageContext)
+    const { lang, toggleLanguage, texts } = useContext(LanguageContext)
 
     return (
         <div>
             <header>
                 <div className="justify-center">
-                    <Link to="/contacts"><button className="p-2 rounded-full bg-gray-200 text-black">Contacts</button></Link>
-                    <Link to="/forms"><button className="p-2 rounded-full bg-gray-200 text-black">Add Contacts</button></Link>
+                    <Link to="/contacts"><button className="p-2 rounded-full bg-gray-200 text-black">{texts.contact}</button></Link>
+                    <Link to="/forms"><button className="p-2 rounded-full bg-gray-200 text-black">{texts.add}</button></Link>
                 </div>
                 <div className="flex gap-4 p-4 justify-center">
                     <nav className="flex gap-2">
@@ -21,8 +21,8 @@ export default function Header() {
                         {theme === 'dark' &&  <button onClick={toggleTheme} type="button" className="p-2 rounded-full bg-gray-200  hover:bg-gray-300 ">☀️</button>}
                     </nav>
                     <nav className="flex gap-2">
-                        {lang === 'ua' && <button onClick={toggleLanguage} type="button" className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300  transition text-black">UA</button>}
-                        {lang === 'en' && <button onClick={toggleLanguage} type="button" className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300  transition text-black">EN</button>}
+                        {lang === 'ua' && <button onClick={() => toggleLanguage('en')} type="button" className="p-2 rounded-full bg-gray-200  hover:bg-gray-300  transition text-black">UA</button>}
+                        {lang === 'en' && <button onClick={() => toggleLanguage('ua')} type="button" className="p-2 rounded-full bg-gray-200  hover:bg-gray-300  transition text-black">EN</button>}
                     </nav>
                 </div>
             </header>
